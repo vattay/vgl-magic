@@ -1,0 +1,8 @@
+It shouldn't be to hard to script this but maybe later...
+
+Remember, to keep that card awake when running nearly headless
+with virtual GL you must add
+
+"Option" "HardDPMD" "false" 
+
+to the device section of the xorg.conf file.
