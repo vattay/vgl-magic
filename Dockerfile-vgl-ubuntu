@@ -1,0 +1,20 @@
+FROM nvidia/opengl:1.0-glvnd-runtime-ubuntu20.04
+
+ENV NVIDIA_DRIVER_CAPABILITIES ${NVIDIA_DRIVER_CAPABILITIES},graphics,compat32
+
+RUN apt-get update && apt-get install -fy \
+  x11-apps \
+  libxtst6 \
+  libxv1 \
+  libglu1-mesa \
+  libxtst6:i386 \
+  libxv1:i386 \
+  libglu1-mesa:i386 \
+  mesa-utils
+
+COPY virtualgl_2.6.5_amd64.deb vgl.deb
+COPY virtualgl32_2.6.5_amd64.deb vgl32.deb
+RUN dpkg -i vgl.deb
+RUN dpkg -i vgl32.deb
+
+RUN apt install -f
